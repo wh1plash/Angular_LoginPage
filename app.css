@@ -1,0 +1,56 @@
+body {font-family: Arial;}
+.lngName{
+  width: 70px;
+  text-align: right;
+}
+.topmnu {
+  padding: 20px 0 30px 10px;
+  top: 20px;
+  position: relative;
+  text-align: right;
+}
+.form_container{
+  position: relative;
+  padding-top: 20px;
+}
+.controls{
+  margin-bottom: 10px;
+}
+
+.btn_container{
+  text-align: left;
+  position: fixed;
+  top: 17px;
+}
+.btn_container .userNameHeader{
+  font-size: 16px;
+  padding: 25px 0 0 10px;
+  position: relative;
+  text-align: center;
+  top: 0px;
+}
+#lng {
+  margin: 0 0 0 35px;
+  padding: 0 0 0 30px;
+}
+#lng
+  li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 8px;
+    background: lightgray;
+    border-radius: 5px;
+    color: #202020;
+    text-shadow: 1px 1px white;
+  }
+#lng
+  .lngName, p {
+    display: inline-block;
+    padding-right: 5px;
+  }
+#lng
+  li:hover, #lng
+    .selected{
+      background: lightblue;
+      font-weight: 700;
+    }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Routing</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.min.js"></script>
+  <script src="angular-route.min.js"></script>
+  <script src="angular-translate.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
+
+<script>
+var app = angular.module('app', ['ngRoute','pascalprecht.translate'])
+      .config(function($routeProvider){
+          $routeProvider
+            .when('/',{
+              templateUrl:'login.html'
+          })
+            .when('/home',{
+              templateUrl:'home.html'
+          })
+            .otherwise({
+              redirectTo:'/'
+          })
+      })
+      app.controller('userCtrl',['$scope', function($scope){
+        $scope.name='';
+        $scope.newName=function(userName){
+          $scope.name=userName;
+          console.log($scope.name);
+        }
+      }])
+      .config(function ($translateProvider) {
+        $translateProvider.translations('en', {
+          TITLE: 'Language',
+          strLabel: 'Enter name',
+          strPassword: 'Enter password',
+          strInputLabel: 'Name',
+          strInputPassword: 'Password',
+          strBtn:'Sign in',
+          strExit: 'Sign out',
+        })
+        $translateProvider.translations('ru', {
+          TITLE: 'Язык',
+          strLabel: 'Введите имя',
+          strPassword: 'Введите пароль',
+          strInputLabel: 'Имя',
+          strInputPassword: 'Пароль',
+          strBtn:'Войти',
+          strExit: 'Выйти',
+        })
+        $translateProvider.preferredLanguage('ru');
+      })
+      .controller('mainCtrl', function( $scope, $translate ){
+        $scope.changeLng = function( lang ) {
+          $translate.use( lang );
+          console.log($translate);
+        }
+        $scope.currentLng = function( lang ) {
+          return $translate.use() == lang;
+        }
+      })
+</script>
+
+</head>
+<body>
+
+  <div class="container" ng-app="app" ng-controller="userCtrl">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10 col-xs-offset-2">
+        <div class="topmnu" ng-controller="mainCtrl">
+          <ul id="lng">
+            <p class="lngName hidden-xs">{{ 'TITLE' | translate }}</p>
+            <li ng-class="{'selected' : currentLng('ru')}" ng-click="changeLng('ru')">Ru</li>
+            <li ng-class="{'selected' : currentLng('en')}" ng-click="changeLng('en')">En</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <ng-view></ng-view>
+  </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div class="form_container">
+  <div class="row">
+    <div class="col-md-6 col-sm-8 col-xs-12 col-sm-offset-2">
+      <form name="form1" action="#/home">
+        <label class="control-label" for="inputname">{{ 'strLabel' | translate }}</label>
+        <div class="controls">
+          <input type="text" class="form-control" placeholder="{{ 'strInputLabel' | translate }}" required ng-model="userName">
+        </div>
+        <label class="control-label" for="inputPassword">{{ 'strPassword' | translate }}</label>
+        <div class="controls">
+          <input type="password" class="form-control" placeholder="{{ 'strInputPassword' | translate }}" required ng-model="userPass">
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-default" ng-disabled="form1.$invalid" ng-click="newName(userName)">{{ 'strBtn' | translate }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
